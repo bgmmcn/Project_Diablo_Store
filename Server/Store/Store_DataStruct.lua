@@ -110,7 +110,7 @@ end
 
 function NavData.Load()
 	NavData.Cache = {};
-	local Query = WorldDBQuery("SELECT * FROM 商城.商品分类")
+	local Query = AuthDBQuery("SELECT * FROM 商城_分类")
 	if Query then 
 		repeat
 			table.insert(
@@ -128,7 +128,7 @@ end
 
 function CurrencyData.Load()
 	CurrencyData.Cache = {};
-	local Query = WorldDBQuery("SELECT * FROM 商城.货币分类")
+	local Query = AuthDBQuery("SELECT * FROM 商城_货币")
 	if Query then 
 		repeat
 			CurrencyData.Cache[Query:GetUInt32(0)] = { -- id
@@ -144,7 +144,7 @@ end
 
 function ServiceData.Load()
 	ServiceData.Cache = {};
-	local Query = WorldDBQuery("SELECT * FROM 商城.商品;");
+	local Query = AuthDBQuery("SELECT * FROM 商城_商品;");
 	if Query then
 		repeat
 			if Query:GetUInt32(KEYS.service.enabled) == 1 then
@@ -210,7 +210,7 @@ function CreatureDisplays.Load()
 	end		
 	
 	--获取生物模型显示缓存的所有信息
-	local Query = WorldDBQuery("SELECT entry, `name`, subname, IconName, type_flags, `type`, family, `rank`, KillCredit1, KillCredit2, HealthModifier, ManaModifier, RacialLeader, MovementType FROM creature_template WHERE entry IN ("..tmp..");")
+	local Query = AuthDBQuery("SELECT entry, `name`, subname, IconName, type_flags, `type`, family, `rank`, KillCredit1, KillCredit2, HealthModifier, ManaModifier, RacialLeader, MovementType FROM creature_template WHERE entry IN ("..tmp..");")
 	if Query then
 		repeat
 			table.insert(
@@ -239,13 +239,13 @@ function CreatureDisplays.Load()
 	end
 
 	for k, v in pairs (CreatureDisplays.Cache) do		--让本地缓存的生物模型保持汉化状态，如不需要汉化，或者不是AZ和TC端，或者出错的，酌情删除
-		local Querylocale = WorldDBQuery("SELECT * FROM creature_template_locale WHERE entry = "..v[1].." and locale = 'zhCN';")
+		local Querylocale = AuthDBQuery("SELECT * FROM creature_template_locale WHERE entry = "..v[1].." and locale = 'zhCN';")
 		if Querylocale then
 			v[2] = Querylocale:GetString(2)
 			v[3] = Querylocale:GetString(3)
 		end
 
-		local Querymodel = WorldDBQuery("SELECT * FROM creature_template_model WHERE CreatureID = "..v[1]..";")
+		local Querymodel = AuthDBQuery("SELECT * FROM creature_template_model WHERE CreatureID = "..v[1]..";")
 		if Querymodel then
 			repeat
 				local idxtmp = Querymodel:GetUInt16(1)

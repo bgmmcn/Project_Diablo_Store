@@ -142,7 +142,7 @@ function SHOP_UI_CLIENT.MainFrame_Create()
 	shopFrame.Background = shopFrame:CreateTexture(nil, "BACKGROUND")
 	shopFrame.Background:SetSize(shopFrame:GetSize())
 	shopFrame.Background:SetPoint("CENTER", shopFrame, "CENTER")
-	shopFrame.Background:SetTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+	shopFrame.Background:SetTexture("Interface/Store/Frames/StoreFrame_Main")
 	shopFrame.Background:SetTexCoord(CoordsToTexCoords(1024, 0, 0, 1024, 658))
 	
 	--标题--
@@ -229,8 +229,8 @@ function SHOP_UI_CLIENT.NavButtons_Create(parent)		--物品购买分类导航按
 		navButton:SetSize(size*scaleMulti, (size/4)*scaleMulti)
 		navButton:SetPoint("LEFT", parent, "LEFT", 17, 232+offset) --位置
 		
-		navButton:SetNormalTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-		navButton:SetHighlightTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		navButton:SetNormalTexture("Interface/Store/Frames/StoreFrame_Main")
+		navButton:SetHighlightTexture("Interface/Store/Frames/StoreFrame_Main")
 		navButton:GetNormalTexture():SetTexCoord(CoordsToTexCoords(1024, 768, 897, 1023, 960))
 		navButton:GetHighlightTexture():SetTexCoord(CoordsToTexCoords(1024, 768, 960, 1023, 1023))
 		
@@ -360,8 +360,8 @@ function SHOP_UI_CLIENT.ServiceBoxes_Create(parent)	--建立每页的商品列�
 		
 		service:SetSize(160, 260)
 		service:SetPoint("CENTER", parent, "CENTER", BoxCoordX, BoxCoordY)
-		service:SetNormalTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-		service:SetHighlightTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		service:SetNormalTexture("Interface/Store/Frames/StoreFrame_Main")
+		service:SetHighlightTexture("Interface/Store/Frames/StoreFrame_Main")
 		service:GetNormalTexture():SetTexCoord(CoordsToTexCoords(1024, 0, 658, 215, 1023))
 		service:GetHighlightTexture():SetTexCoord(CoordsToTexCoords(1024, 215, 658, 430, 1023))
 		
@@ -405,7 +405,7 @@ function SHOP_UI_CLIENT.ServiceBoxes_Create(parent)	--建立每页的商品列�
 		service.DiscountSlash = service:CreateTexture(nil, "OVERLAY")
 		service.DiscountSlash:SetSize(36, 18)	--前面数字是折扣线长度，后面数字是折扣线高度，长度是宽度2倍比较好看
 		service.DiscountSlash:SetPoint("CENTER", service.DicountFont)
-		service.DiscountSlash:SetTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		service.DiscountSlash:SetTexture("Interface/Store/Frames/StoreFrame_Main")
 		service.DiscountSlash:SetTexCoord(CoordsToTexCoords(1024, 992, 804, 1023, 835))
 		
 		--Discount Banner-- 折扣条--
@@ -417,7 +417,7 @@ function SHOP_UI_CLIENT.ServiceBoxes_Create(parent)	--建立每页的商品列�
 		service.Banner.Background = service.Banner:CreateTexture(nil, "BACKGROUND")
 		service.Banner.Background:SetSize(80, 25)
 		service.Banner.Background:SetPoint("CENTER", service.Banner)
-		service.Banner.Background:SetTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		service.Banner.Background:SetTexture("Interface/Store/Frames/StoreFrame_Main")
 		service.Banner.Background:SetTexCoord(CoordsToTexCoords(1024, 862, 765, 961, 815))
 		
 		--Discount Banner Text-- 折扣背景文字--
@@ -430,16 +430,16 @@ function SHOP_UI_CLIENT.ServiceBoxes_Create(parent)	--建立每页的商品列�
 		service.newTag = service:CreateTexture(nil, "OVERLAY")
 		service.newTag:SetSize(65, 30)
 		service.newTag:SetPoint("CENTER", service, "LEFT", 35, 114)
-		service.newTag:SetTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		service.newTag:SetTexture("Interface/Store/Frames/StoreFrame_Main")
 		service.newTag:SetTexCoord(CoordsToTexCoords(1024, 862, 816, 961, 866))
 		
 		-- Buy now button 购买标签
 		service.buyButton = CreateFrame("Button", nil, service)
 		service.buyButton:SetSize(100, 28)
 		service.buyButton:SetPoint("CENTER", service, "CENTER", 0, -85)
-		service.buyButton:SetNormalTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-		service.buyButton:SetHighlightTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-		service.buyButton:SetPushedTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+		service.buyButton:SetNormalTexture("Interface/Store/Frames/StoreFrame_Main")
+		service.buyButton:SetHighlightTexture("Interface/Store/Frames/StoreFrame_Main")
+		service.buyButton:SetPushedTexture("Interface/Store/Frames/StoreFrame_Main")
 		service.buyButton:GetNormalTexture():SetTexCoord(CoordsToTexCoords(1024, 709, 849, 837, 873))
 		service.buyButton:GetHighlightTexture():SetTexCoord(CoordsToTexCoords(1024, 709, 849, 837, 873))
 		service.buyButton:GetPushedTexture():SetTexCoord(CoordsToTexCoords(1024, 709, 873, 837, 897))
@@ -590,7 +590,7 @@ function SHOP_UI_CLIENT.ServiceBoxes_Update()	--商品购买服务界面更新
 			service.Icon:SetTexture("Interface/Icons/" .. service.IconTexture)	-- 更新表格数据
 			service.NameFont:SetFormattedText("|cffffffff%s|r", service.Name)
 			service.DicountFont:SetFormattedText("|cffdbe005%i|r", service.Price)
-			--service.currencyIcon:SetTexture("Interface/Store_UI/Currencies/" .. currencyIcon)	 --不用商城通过mpq工具加入的Store_UI自带图标
+			--service.currencyIcon:SetTexture("Interface/Store/Currencies/" .. currencyIcon)	 --不用商城通过mpq工具加入的Store自带图标
 			service.currencyIcon:SetTexture("Interface/Icons/" .. currencyIcon)		--改用系统自带图标
 
 			if service.Discount >= 1 then	-- 如果打折, 则显示折扣相关信息,否则隐藏折扣信息
@@ -639,9 +639,9 @@ function SHOP_UI_CLIENT.PageButtons_Create(parent)		--建立翻页界面的主�
 	
 	-- Set back button textures
 	local backTopX, backTopY, backBotX, backBotY = 837, 866, 868, 897
-	backButton:SetDisabledTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-	backButton:SetNormalTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-	backButton:SetPushedTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+	backButton:SetDisabledTexture("Interface/Store/Frames/StoreFrame_Main")
+	backButton:SetNormalTexture("Interface/Store/Frames/StoreFrame_Main")
+	backButton:SetPushedTexture("Interface/Store/Frames/StoreFrame_Main")
 	backButton:GetDisabledTexture():SetTexCoord(CoordsToTexCoords(1024, backTopX, backTopY, backBotX, backBotY))
 	backButton:GetNormalTexture():SetTexCoord(CoordsToTexCoords(1024, backTopX+31, backTopY, backBotX+31, backBotY))
 	backButton:GetPushedTexture():SetTexCoord(CoordsToTexCoords(1024, backTopX+62, backTopY, backBotX+62, backBotY))
@@ -664,9 +664,9 @@ function SHOP_UI_CLIENT.PageButtons_Create(parent)		--建立翻页界面的主�
 	
 	-- Set back button textures
 	local forwTopX, forwTopY, forwBotX, forwBotY = 930, 866, 961, 897
-	forwardButton:SetDisabledTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-	forwardButton:SetNormalTexture("Interface/Store_UI/Frames/StoreFrame_Main")
-	forwardButton:SetPushedTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+	forwardButton:SetDisabledTexture("Interface/Store/Frames/StoreFrame_Main")
+	forwardButton:SetNormalTexture("Interface/Store/Frames/StoreFrame_Main")
+	forwardButton:SetPushedTexture("Interface/Store/Frames/StoreFrame_Main")
 	forwardButton:GetDisabledTexture():SetTexCoord(CoordsToTexCoords(1024, forwTopX, forwTopY, forwBotX, forwBotY))
 	forwardButton:GetNormalTexture():SetTexCoord(CoordsToTexCoords(1024, forwTopX+31, forwTopY, forwBotX+31, forwBotY))
 	forwardButton:GetPushedTexture():SetTexCoord(CoordsToTexCoords(1024, forwTopX+62, forwTopY, forwBotX+62, forwBotY))
@@ -807,7 +807,7 @@ function SHOP_UI_CLIENT.CurrencyBadges_Update()		--左下角金币和代币更�
 		if(button.shown) then
 			button.currencyValue = SHOP_UI_CLIENT["Vars"]["playerCurrencies"][button.currencyId]
 			button.Amount:SetText(button.currencyValue)
---			button.Icon:SetTexture("Interface/Store_UI/Currencies/"..button.currencyIcon)  	--弃用商城自带图标
+--			button.Icon:SetTexture("Interface/Store/Currencies/"..button.currencyIcon)  	--弃用商城自带图标
 			button.Icon:SetTexture("Interface/Icons/" ..button.currencyIcon)				--采用系统自带图标
 		end
 	end
@@ -830,7 +830,7 @@ function SHOP_UI_CLIENT.ModelFrame_Create(parent)   --建立预览窗口主界�
 	modelFrame.Background = modelFrame:CreateTexture(nil, "BACKGROUND")
 	modelFrame.Background:SetSize(modelFrame:GetSize())
 	modelFrame.Background:SetPoint("CENTER", modelFrame, "CENTER")
-	modelFrame.Background:SetTexture("Interface/Store_UI/Frames/StoreFrame_Main")
+	modelFrame.Background:SetTexture("Interface/Store/Frames/StoreFrame_Main")
 	modelFrame.Background:SetTexCoord(CoordsToTexCoords(1024, 430, 658, 701, 1023))
 	
 	modelFrame:SetScript(

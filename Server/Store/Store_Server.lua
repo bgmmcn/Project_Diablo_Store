@@ -147,11 +147,11 @@ function Shop_Services.DeductCurrency(player, currencyId, amount)
 	return true
 end
 
-function Shop_Services.LogPurchase(player, data)--购买日志
+function Shop_Services.LogPurchase(player, data)--日志
 	local currency, amount = data[KEYS.service.currency], data[KEYS.service.price] - data[KEYS.service.discount]
 	--注意插入字符串需要额外的引号,由于双引号系统使用了,这里 "..player:GetName().." 外面用单引号括号 ' ' ,否则容易导致服务器宕机。
 	--另外为了方便改字段名，插入对象名字 (账号ID, 角色ID, 角色名......) 不再写入sql，用完整写入所有字段数据代替，故需补上 current_timestamp() 这样提交到数据库后,自动生成当前时间
-	WorldDBExecute("INSERT INTO 商城.购买日志 VALUES("..player:GetAccountId()..", "..player:GetGUIDLow()..", '"..player:GetName().."', "..data.ID..", "..currency..", "..amount..", current_timestamp());")
+	AuthDBExecute("INSERT INTO 商城_日志 VALUES("..player:GetAccountId()..", "..player:GetGUIDLow()..", '"..player:GetName().."', "..data.ID..", "..currency..", "..amount..", current_timestamp());")
 end
 
 --3、物品

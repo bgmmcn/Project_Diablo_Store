@@ -45,7 +45,7 @@ You can access the store through the "Escape" menu ingame.
 - type = 2: item token, this will set this currency to use an item as currency.
 	- data: this is the entry id of the item token.
 - type = 3: server handled, this should be used for any other currency, be it database driven donation/vote points or otherwise. This requires special handling in Store_Server.lua, specifically in the functions SHOP_UI.DeductCurrency and StoreHandler.UpdateCurrencies.
-- icon: sets the currencies icon, this is loaded from "interface/Store_UI/Currencies" directory.
+- icon: sets the currencies icon, this is loaded from "interface/Store/Currencies" directory.
 
 ### store_category_service_link:
 - This table is relatively self explanatory. You link categories and services from "store_categories" and "store_services" together to define which category a service should appear in. A service can appear in multiple categories.
