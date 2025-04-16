@@ -426,9 +426,9 @@ function SHOP_UI_CLIENT.ServiceBoxes_Create(parent)
         service:SetScript(
             "OnClick",
             function(self)
-                if(self.Type == 9) then
+                if(self.Type == 7) then
                     SHOP_UI_CLIENT.ModelFrame_ShowPlayer(self.Rewards)
-                elseif (self.Type == 4 or self.Type == 5) and self.EntryOrSkill > 0 then
+                elseif (self.Type == 2 or self.Type == 3) and self.EntryOrSkill > 0 then
                     SHOP_UI_CLIENT.ModelFrame_ShowCreature(self.EntryOrSkill)
                 else
                     SHOP_UI_CLIENT["MODEL_FRAME"].playerModel:Hide()

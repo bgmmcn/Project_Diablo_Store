@@ -93,6 +93,8 @@ function StoreHandler.UpdateCurrencies(player)
     AIO.Handle(player, "STORE_CLIENT", "UpdateCurrencies", tmp)
 end
 
+local IsDouble = 0
+
 function StoreHandler.Purchase(player, serviceId)
     if IsDouble > 0 then
         return
